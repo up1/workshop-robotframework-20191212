@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Test Teardown    Close Browser
     
 *** Variables ***
 
@@ -39,5 +40,7 @@ Library    SeleniumLibrary
 
 ไปยังหน้าค้นหา
     Open Browser   url=http://www.google.com   
-    ...  browser=gc
+    ...  browser=chrome
+    ...  remote_url=http://10.2.33.245:4444/wd/hub
+    ...  desired_capabilities=browserName:chrome
     Maximize Browser Window
