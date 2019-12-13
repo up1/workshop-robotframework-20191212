@@ -42,6 +42,6 @@ Test Teardown    Close Browser
 ไปยังหน้าค้นหา
     Open Browser   url=http://www.google.com   
     ...  browser=chrome
-    ...  remote_url=http://10.2.33.245:4444/wd/hub
-    ...  desired_capabilities=browserName:chrome
+    # ...  remote_url=http://10.2.33.245:4444/wd/hub
+    # ...  desired_capabilities=browserName:chrome
     Maximize Browser Window
