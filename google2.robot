@@ -1,18 +1,21 @@
 *** Settings ***
-Library    SeleniumLibrary
+Library           SeleniumLibrary
+Suite Setup       ไปยังหน้าค้นหา
+Suite Teardown    Close Browser
+Test Teardown     กลับไปยังหน้าค้นหา
     
 *** Variables ***
+${URL}       http://www.google.com
+${BROWSER}   chrome
 
 *** Test Cases ***
 ค้นหาโดยใช้คำว่า ATDD
     [Tags]   done   feature01   sprint01
-    ไปยังหน้าค้นหา
     ค้นหาคำว่า    ATDD
     ต้องเจอผลการค้นหาของคำว่า   ATDD
 
 ค้นหาโดยใช้คำว่า BNK48
     [Tags]   testing
-    ไปยังหน้าค้นหา
     ค้นหาคำว่า    BNK48
     ต้องเจอผลการค้นหาของคำว่า    BNK48
 
@@ -37,7 +40,9 @@ Library    SeleniumLibrary
 
     Wait Until Page Contains   ${expected_result}
 
+กลับไปยังหน้าค้นหา
+    Go To    ${URL}   
+
 ไปยังหน้าค้นหา
-    Open Browser   url=http://www.google.com   
-    ...  browser=gc
+    Open Browser   url=${URL}   browser=${BROWSER}
     Maximize Browser Window
