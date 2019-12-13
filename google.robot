@@ -38,6 +38,7 @@ Test Teardown    Close Browser
 
     Wait Until Page Contains   ${expected_result}
 
+
 ไปยังหน้าค้นหา
     Open Browser   url=http://www.google.com   
     ...  browser=chrome
