@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "eb4952a6-e119-48d6-9633-91e80d4ce423",
+		"name": "group01",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "step 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8c709fb1-d54b-4f52-b2a5-0351c2beb268",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 5000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+							"});",
+							"",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(10);",
+							"    pm.expect(jsonData[0].address.zipcode).to.eql('92998-3874');",
+							"    pm.globals.set(\"data\", jsonData[0].address.zipcode);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/users",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "step 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "14030faf-4907-423d-916a-f81df912f53f",
+						"exec": [
+							"pm.globals.get(\"data\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/users",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
